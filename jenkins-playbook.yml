@@ -1,0 +1,15 @@
+- hosts: jenkins
+  become: true
+  
+  vars:
+    java_packages:
+      -  java-17-amazon-corretto-headless
+    jenkins_plugins:
+      - name: configuration-as-code
+      - name: job-dsl
+    jenkins_plugins_install_dependencies: true
+    jenkins_plugins_state: present
+    
+  roles:
+    - role: geerlingguy.java
+    - role: geerlingguy.jenkins
