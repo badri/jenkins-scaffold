@@ -133,6 +133,7 @@
       - name: plugin-util-api
       - name: pubsub-light
       - name: resource-disposer
+      - name: role-strategy
       - name: scm-api
       - name: script-security
       - name: slack
