@@ -69,6 +69,7 @@
       - name: credentials
       - name: credentials-binding
       - name: dark-theme
+      - name: datadog
       - name: data-tables-api
       - name: display-url-api
       - name: docker-commons
@@ -132,6 +133,7 @@
       - name: plain-credentials
       - name: plugin-util-api
       - name: pubsub-light
+      - name: rebuilder
       - name: resource-disposer
       - name: role-strategy
       - name: scm-api

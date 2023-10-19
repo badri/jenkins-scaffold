@@ -1,0 +1,178 @@
+- name: "Install plugins in Jenkins"
+  hosts: jenkins
+  become: true
+
+  vars:
+    admin_user: "lnp-sl"
+    admin_token: "11addb8b28a8a1e38779a387546b8afca6"
+    jenkins_url: "http://localhost:8080"
+    jenkins_home: "/var/lib/jenkins"
+    updates_expiration: 86400
+    updates_url: "https://updates.jenkins.io"
+    plugin_timeout: 30
+  
+  tasks:
+    - name: Install plugins.
+      jenkins_plugin:
+        name: "{{ item }}"
+        jenkins_home: "{{ jenkins_home }}"
+        url_username: "{{ admin_user }}"
+        url_password: "{{ admin_token }}"
+        state: "present"
+        timeout: "{{ plugin_timeout }}"
+        updates_expiration: " {{ updates_expiration }}"
+        updates_url: "{{ updates_url }}"
+        url: "{{ jenkins_url }}"
+        with_dependencies: true
+      loop:
+        - amazon-ecr
+        - ant
+        - antisamy-markup-formatter
+        - apache-httpcomponents-client-4-api
+        - authentication-tokens
+        - aws-credentials
+        - aws-java-sdk
+        - aws-java-sdk-cloudformation
+        - aws-java-sdk-codebuild
+        - aws-java-sdk-ec2
+        - aws-java-sdk-ecr
+        - aws-java-sdk-ecs
+        - aws-java-sdk-efs
+        - aws-java-sdk-elasticbeanstalk
+        - aws-java-sdk-iam
+        - aws-java-sdk-logs
+        - aws-java-sdk-minimal
+        - aws-java-sdk-sns
+        - aws-java-sdk-sqs
+        - aws-java-sdk-ssm
+        - blueocean
+        - blueocean-bitbucket-pipeline
+        - blueocean-commons
+        - blueocean-config
+        - blueocean-core-js
+        - blueocean-dashboard
+        - blueocean-display-url
+        - blueocean-events
+        - blueocean-git-pipeline
+        - blueocean-github-pipeline
+        - blueocean-i18n
+        - blueocean-jwt
+        - blueocean-personalization
+        - blueocean-pipeline-api-impl
+        - blueocean-pipeline-editor
+        - blueocean-pipeline-scm-api
+        - blueocean-rest
+        - blueocean-rest-impl
+        - blueocean-web
+        - bootstrap5-api
+        - bouncycastle-api
+        - branch-api
+        - build-timeout
+        - build-user-vars-plugin
+        - caffeine-api
+        - checks-api
+        - cloudbees-bitbucket-branch-source
+        - cloudbees-folder
+        - command-launcher
+        - commons-lang3-api
+        - commons-text-api
+        - configuration-as-code        
+        - config-file-provider        
+        - credentials
+        - credentials-binding
+        - dark-theme
+        - datadog
+        - data-tables-api
+        - display-url-api
+        - docker-commons
+        - docker-workflow
+        - durable-task
+        - echarts-api
+        - email-ext
+        - extended-read-permission
+        - favorite
+        - font-awesome-api
+        - git
+        - git-client
+        - git-server
+        - github
+        - github-api
+        - github-branch-source
+        - github-oauth
+        - gradle
+        - handy-uri-templates-2-api
+        - htmlpublisher
+        - instance-identity
+        - ionicons-api
+        - jackson2-api
+        - jakarta-activation-api
+        - jakarta-mail-api
+        - javax-activation-api
+        - javax-mail-api
+        - jaxb
+        - jdk-tool
+        - jenkins-design-language
+        - jjwt-api
+        - job-dsl        
+        - jquery3-api
+        - jsch
+        - junit
+        - ldap
+        - lockable-resources
+        - mailer
+        - mapdb-api
+        - matrix-auth
+        - matrix-project
+        - mina-sshd-api-common
+        - mina-sshd-api-core
+        - okhttp-api
+        - pam-auth
+        - pipeline-aws
+        - pipeline-build-step
+        - pipeline-github-lib
+        - pipeline-graph-analysis
+        - pipeline-input-step
+        - pipeline-milestone-step
+        - pipeline-model-api
+        - pipeline-model-definition
+        - pipeline-model-extensions
+        - pipeline-multibranch-defaults
+        - pipeline-rest-api
+        - pipeline-stage-step
+        - pipeline-stage-tags-metadata
+        - pipeline-stage-view
+        - pipeline-timeline
+        - plain-credentials
+        - plugin-util-api
+        - pubsub-light
+        - rebuilder
+        - resource-disposer
+        - role-strategy
+        - scm-api
+        - script-security
+        - slack
+        - snakeyaml-api
+        - sse-gateway
+        - ssh-credentials
+        - ssh-slaves
+        - sshd
+        - structs
+        - subversion
+        - theme-manager
+        - timestamper
+        - token-macro
+        - trilead-api
+        - uno-choice
+        - variant
+        - workflow-aggregator
+        - workflow-api
+        - workflow-basic-steps
+        - workflow-cps
+        - workflow-durable-task-step
+        - workflow-job
+        - workflow-multibranch
+        - workflow-scm-step
+        - workflow-step-api
+        - workflow-support
+        - ws-cleanup      
+        
